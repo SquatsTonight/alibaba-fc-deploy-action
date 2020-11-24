@@ -1,0 +1,43 @@
+# This workflow will deploy service/function of Aliyun Function Compute.
+#
+# This workflow assumes you have already created the project using fc-alibaba-component of Serverless-Devs.
+
+name: 'Deploy Service/Functon To Aliyun FC Function Using Serverless-Devs'
+description: 'Deploy Aliyun FC Service/Function'
+
+inputs:
+  working_directory:
+    description: 'Directory containing template.yml'
+    required: false
+    default: './'
+  projects:
+    description: 'Target projects which are delimited by space. The default * represents all projects'
+    required: false
+    default: '*'
+  commands: 
+    description: 'Subcommand of the deployment command'
+    required: false
+  args:
+    description: 'Args of the deployment command'
+    required: false
+
+outputs:
+  deploy-logs: 
+    description: "Logs of deployment"
+    value: ${{ steps.deploy.outputs.deploy-logs }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: chmod
+      run: sudo chmod +x ${{ github.action_path }}/dev/deploy.sh
+      shell: bash
+
+    - id: deploy
+      run: ${{ github.action_path }}/dev/deploy.sh
+      shell: bash
+      env:
+        INPUT_WORKING_DIRECTORY: ${{ inputs.working_directory }}
+        INPUT_PROJECTS: ${{ inputs.projects }}
+        INPUT_COMMANDS: ${{ inputs.commands }}
+        INPUT_ARGS: ${{ inputs.args }}
