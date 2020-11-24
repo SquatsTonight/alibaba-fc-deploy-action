@@ -1,0 +1,56 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  WORKING_DIRECTORY: ./test
+
+
+jobs:
+  deploy:
+    name: deploy service and function
+    runs-on: ubuntu-latest
+    outputs:
+      deploy-logs: ${{ steps.Deploying.outputs.deploy-logs }}
+    steps:
+    - id: Checkout
+      name: Checkout
+      uses: actions/checkout@v2
+
+    - id: Initializing-Serverless-Devs
+      name: Initializing Serverless-Devs
+      uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+      with:
+        provider: alibaba
+        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+
+    - id: Deploying
+      name: Deploying
+      uses: ./
+      with:
+        working_directory: ${{ env.WORKING_DIRECTORY }}
+
+    - id: Invoking
+      name: Invoking
+      run: ( cd ${{ env.WORKING_DIRECTORY }} && sudo s invoke remote )
+      shell: bash
+
+    - id: Removing-function
+      name: Removing function
+      run: ( cd ${{ env.WORKING_DIRECTORY }} && sudo s remove function )
+      shell: bash
+
+  check:
+    name: check output of deployment
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - id: Checking-output
+      name: Checking output
+      run: echo "${{ needs.deploy.outputs.deploy-logs }}"

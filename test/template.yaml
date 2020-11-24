@@ -1,0 +1,16 @@
+MyFunctionDemo:
+  Component: fc
+  Provider: alibaba
+  Properties:
+    Region: cn-hongkong
+    Service:
+      Name: ServerlessToolProject
+      Description: Welcome to ServerlessTool
+    Function:
+      Name: serverless_demo_nodejs10
+      Description: This is a nodje10 test case
+      CodeUri: ./fc-demo/nodejs10
+      Handler: index.handler
+      MemorySize: 128
+      Runtime: nodejs10
+      Timeout: 5
