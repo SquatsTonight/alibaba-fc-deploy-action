@@ -1,5 +1,5 @@
-![GitHub Actions status](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Actinos/workflows/Check/badge.svg)
-[![License](https://img.shields.io/github/license/git-qfzhang/Serverless-Devs-Initialization-Actinos.svg)](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Actinos/blob/master/LICENSE)
+![GitHub Actions status](https://github.com/git-qfzhang/alibaba-fc-deploy-action/workflows/Check/badge.svg)
+[![License](https://img.shields.io/github/license/git-qfzhang/alibaba-fc-deploy-action.svg)](https://github.com/git-qfzhang/alibaba-fc-deploy-action/blob/master/LICENSE)
 
 # Alibaba Function Computer Deploy Action For Github Actions
 
@@ -7,11 +7,20 @@ Github action for deploying service/function to alibaba function computer.
 
 <!-- toc -->
 
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
-- [Input variables](#credentials)
+- [Input variables](#input-variables)
+- [Output variables](#output-variables)
 - [License Summary](#license-summary)
 
 <!-- tocstop -->
+
+## Prerequisites
+
+You should be familiar with Alibaba FC and Serverless-Devs FC Component. For more information, see:
+
+* "[Alibaba FC](https://help.aliyun.com/document_detail/52895.html?spm=a2c4g.11186623.6.541.7678c030BEWawt)"
+* "[Serverless-Devs FC Component](https://github.com/Serverless-Devs-Awesome/fc-alibaba-component/)"
 
 ## Usage
 
@@ -41,9 +50,9 @@ jobs:
       uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
       with:
         provider: alibaba
-        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
     - id: Deploying
       name: Deploying
@@ -79,9 +88,9 @@ jobs:
       uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
       with:
         provider: alibaba
-        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
     - id: Deploying
       name: Deploying
@@ -93,6 +102,8 @@ jobs:
 ```
 
 Every single porject contains only one function in the template.yml, more infomation can refer to [here](https://github.com/Serverless-Devs-Awesome/fc-alibaba-component).
+
+The application of alibaba-fc-deploy-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/Serverless-CI-CD/tree/dev/src)
 
 ## Input variables
 
@@ -119,6 +130,12 @@ See [action.yml](action.yml) for the full documentation for this action's inputs
 
     * --config - only deploy config.
     * --skip-sync - skip sync auto generated configuration back to template file.
+
+## Output variables
+
+See [action.yml](action.yml) for the full documentation for this action's outputs.
+
+* deploy-logs - Stdout/stderr logs of deploying service/function.
 
 ## License Summary
 
