@@ -26,9 +26,9 @@ jobs:
       uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
       with:
         provider: alibaba
-        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
     - id: Deploying
       name: Deploying
