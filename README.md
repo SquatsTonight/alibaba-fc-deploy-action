@@ -47,7 +47,7 @@ jobs:
 
     - id: Initializing-Serverless-Devs
       name: Initializing Serverless-Devs
-      uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+      uses: Serverless-Devs/serverless-devs-initialization-action@main
       with:
         provider: alibaba
         AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
@@ -85,7 +85,7 @@ jobs:
 
     - id: Initializing-Serverless-Devs
       name: Initializing Serverless-Devs
-      uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+      uses: Serverless-Devs/serverless-devs-initialization-action@main
       with:
         provider: alibaba
         AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
