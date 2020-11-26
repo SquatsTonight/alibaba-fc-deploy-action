@@ -103,7 +103,7 @@ jobs:
 
 Every single porject contains only one function in the template.yml, more infomation can refer to [here](https://github.com/Serverless-Devs-Awesome/fc-alibaba-component).
 
-The application of alibaba-fc-deploy-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/Serverless-CI-CD/tree/dev/src)
+The application of alibaba-fc-deploy-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/serverless-cicd)
 
 ## Input variables
 
